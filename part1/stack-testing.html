@@ -1,0 +1,582 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Testing the simple stack · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="stack-multiple-instances.html" />
+    
+    
+    <link rel="prev" href="stack-starting.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="examples-setup.html">
+            
+                <a href="examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="stack-starting.html">
+            
+                <a href="stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="stack-testing.html">
+            
+                <a href="stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="stack-multiple-instances.html">
+            
+                <a href="stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="stack-parameters.html">
+            
+                <a href="stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="stack-pipelines.html">
+            
+                <a href="stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="stack-roles.html">
+            
+                <a href="stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../reference/README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../reference/cloudspin-project-structure.html">
+            
+                <a href="../reference/cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../reference/cloudspin-instance-configuration.html">
+            
+                <a href="../reference/cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../reference/cloudspin-stack-roles.html">
+            
+                <a href="../reference/cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../reference/stack-command-line.html">
+            
+                <a href="../reference/stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../reference/cloudspin-ruby-api.html">
+            
+                <a href="../reference/cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../reference/cloudspin-rake.html">
+            
+                <a href="../reference/cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../reference/cloudspin-artefacts.html">
+            
+                <a href="../reference/cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Testing the simple stack</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="testing-the-simple-stack">Testing the simple stack</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, the cloudspin rake library provides support for running <a href="https://www.inspec.io/docs/" target="_blank">Inspec</a> controls (tests) against AWS infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>The following is based on the <a href="https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/01-basic-stack" target="_blank">basic-stack</a> example project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_the_inspec_tasks_to_the_rakefile">Adding the inspec tasks to the Rakefile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You need to declare a <em>Cloudspin::Stack::Rake::InspecTask</em> object in the rakefile, passing it a <em>StackInstance</em> object for the stack instance to test.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">include</span> <span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span>
+
+stack = StackTask.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance
+InspecTask.new(<span class="hljs-symbol">stack_instance:</span> stack)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This looks for the folder <code>./test/inspec</code>, and if found, adds the <strong>inspec</strong> task:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rake -T
+rake down     <span class="hljs-comment"># Destroy stack test-network</span>
+rake dry      <span class="hljs-comment"># Show command line to be run for stack test-network</span>
+rake inspec   <span class="hljs-comment"># Run inspec tests</span>
+rake plan     <span class="hljs-comment"># Plan changes to stack test-network</span>
+rake up       <span class="hljs-comment"># Create or update stack test-network</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_running_the_inspec_tests">Running the inspec tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the example project, this simply checks that the VPC with the expected name exists.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rake inspec
+mkdir -p ./work/inspec
+Run inspec
+inspec <span class="hljs-built_in">exec</span> ./<span class="hljs-built_in">test</span>/inspec/. --attrs ./work/inspec/attributes-for-stack-test-network.yml --reporter json-rspec:./work/inspec/results-for-stack-test-network-profile-infrastructure.json cli -t aws://eu-west-1/assume-spin_stack_manager-skeleton
+
+Profile: Controls <span class="hljs-keyword">for</span> AWS resources (infrastructure)
+Version: 0.1.0
+Target:  aws://eu-west-1
+
+  VPCs
+     &#x2714;  name should include <span class="hljs-string">&quot;vpc-test-network&quot;</span>
+
+Test Summary: 1 successful, 0 failures, 0 skipped</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_writing_inspec_tests">Writing inspec tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the inspec documentation for details on organizing and writing Inspec controls. One bit of support that the cloudspin inspec rake task provides is passing parameters to the inspec controls. By default, all of the stack parameters are made available as attributes within the control.</p>
+</div>
+<div class="paragraph">
+<p>The example uses the <em>stack_instance_id</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">title <span class="hljs-string">&apos;vpc&apos;</span>
+
+stack_instance_id = attribute(<span class="hljs-string">&apos;stack_instance_id&apos;</span>, <span class="hljs-symbol">description:</span> <span class="hljs-string">&apos;Which stack to test&apos;</span>)
+
+describe aws_vpc_list <span class="hljs-keyword">do</span>
+  its(<span class="hljs-string">&apos;name&apos;</span>) { should <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;vpc-<span class="hljs-subst">#{stack_instance_id}</span>&quot;</span> }
+<span class="hljs-keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another test shows that the <em>region</em> parameter has been set (it&#x2019;s set in the file <code>stack-instance-defaults.yaml</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">aws_region = attribute(<span class="hljs-string">&apos;region&apos;</span>, <span class="hljs-symbol">description:</span> <span class="hljs-string">&apos;aws region&apos;</span>)
+describe aws_region <span class="hljs-keyword">do</span>
+  it <span class="hljs-string">&apos;region attribute should be available&apos;</span> <span class="hljs-keyword">do</span>
+    expect(subject).not_to eq(<span class="hljs-string">&apos;&apos;</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running <code>rake inspec</code> in the example project runs these two controls:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rake inspec
+mkdir -p ./work/inspec
+Run inspec
+inspec <span class="hljs-built_in">exec</span> ./<span class="hljs-built_in">test</span>/inspec/. --attrs ./work/inspec/attributes-for-stack-test-network.yml --reporter json-rspec:./work/inspec/results-for-stack-test-network-profile-infrastructure.json cli -t aws://eu-west-1/assume-spin_stack_manager-skeleton
+
+Profile: Controls <span class="hljs-keyword">for</span> AWS resources (infrastructure)
+Version: 0.1.0
+Target:  aws://eu-west-1
+
+  VPCs
+     &#x2714;  name should include <span class="hljs-string">&quot;vpc-test-network&quot;</span>
+  eu-west-1
+     &#x2714;  region attribute should be available
+
+Test Summary: 2 successful, 0 failures, 0 skipped</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_where_stuff_is">Where stuff is</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned previously, cloudspin copies the source code to an instance folder, by default <code>./work</code>. The inspec attributes file is automatically generated in <code>./work/inspec/attributes-for-stack-INSTANCE_NAME.yml</code>. The log output, useful for debugging failed tests, is put in <code>./work/inspec/results-for-stack-INSTANCE_NAME-profile-PROFILE_NAME.json</code>. <em>PROFILE_NAME</em> is set in the inspec profile files (<code>./test/inspec/inspec.yml</code>).</p>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="stack-starting.html" class="navigation navigation-prev " aria-label="Previous page: Creating a simple stack">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="stack-multiple-instances.html" class="navigation navigation-next " aria-label="Next page: Creating multiple stack instances">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Testing the simple stack","level":"1.2.3","depth":2,"next":{"title":"Creating multiple stack instances","level":"1.2.4","depth":2,"path":"part1/stack-multiple-instances.adoc","ref":"part1/stack-multiple-instances.adoc","articles":[]},"previous":{"title":"Creating a simple stack","level":"1.2.2","depth":2,"path":"part1/stack-starting.adoc","ref":"part1/stack-starting.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"part1/stack-testing.adoc","mtime":"2018-09-10T12:44:42.374Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

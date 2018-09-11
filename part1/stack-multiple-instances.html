@@ -1,0 +1,574 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Creating multiple stack instances · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="stack-parameters.html" />
+    
+    
+    <link rel="prev" href="stack-testing.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="examples-setup.html">
+            
+                <a href="examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="stack-starting.html">
+            
+                <a href="stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="stack-testing.html">
+            
+                <a href="stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="stack-multiple-instances.html">
+            
+                <a href="stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="stack-parameters.html">
+            
+                <a href="stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="stack-pipelines.html">
+            
+                <a href="stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="stack-roles.html">
+            
+                <a href="stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../reference/README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../reference/cloudspin-project-structure.html">
+            
+                <a href="../reference/cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../reference/cloudspin-instance-configuration.html">
+            
+                <a href="../reference/cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../reference/cloudspin-stack-roles.html">
+            
+                <a href="../reference/cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../reference/stack-command-line.html">
+            
+                <a href="../reference/stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../reference/cloudspin-ruby-api.html">
+            
+                <a href="../reference/cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../reference/cloudspin-rake.html">
+            
+                <a href="../reference/cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../reference/cloudspin-artefacts.html">
+            
+                <a href="../reference/cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Creating multiple stack instances</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="creating-multiple-stack-instances">Creating multiple stack instances</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section walks through an example stack project that has multiple environments.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_example_source_code">The example source code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The example project is in the folder examples/02-multiple-stacks, available from github at <a href="https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/02-multiple-stacks" class="bare" target="_blank">https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/02-multiple-stacks</a>.</p>
+</div>
+<div class="paragraph">
+<p>This project creates some networking structures, just like the 01-simple-stack project, although it adds a <em>EnvironmentName</em> tag to the resources.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_environment_configuration_options">Environment configuration options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project adds some new parameters to the <code>stack-instance-defaults.yaml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
+<span class="hljs-attr">  group:</span> NOT_SET
+<span class="hljs-attr">parameters:</span>
+<span class="hljs-attr">  region:</span> <span class="hljs-string">&quot;eu-west-1&quot;</span>
+<span class="hljs-attr">  availability_zones:</span> <span class="hljs-string">&quot;eu-west-1a,eu-west-1b,eu-west-1c&quot;</span>
+<span class="hljs-attr">  environment_name:</span> NOT_SET</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>parameters:environment_name</code> is passed to terraform, so it can be assigned to resource tags. This is purely a convention - nothing in cloudspin itself insists on this.</p>
+</div>
+<div class="paragraph">
+<p><code>instance:group</code> is used by the cloudspin tools to build unique a <code>instance_identifier</code> for each stack instance. Before, the instance_identifier was set to <strong><code>STACK_NAME</code></strong>, which was taken from the <em>stack:name</em> options set in the stack definition file <code>./src/stack-definition.yaml</code>. Now, <em>instance:group</em> is added to it, so the the instance_identifier is set to <strong><code>STACK_NAME-INSTANCE_GROUP</code></strong>.</p>
+</div>
+<div class="paragraph">
+<p>In this example, the stack name is <em>example2</em>, so if you were to run <code>stack up</code>, it would use <code>instance_identifier=example2-NOT_SET</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry
+cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/example2-NOT_SET &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=NOT_SET&apos; -var &apos;aws_profile=my-cloudspin-user&apos; -var &apos;assume_role_profile=assume-my-cloudspin-role&apos; -var &apos;assume_role_arn=arn:aws:iam::000000000000:role/my-cloudspin-iam-role&apos; -var &apos;instance_identifier=example2-NOT_SET&apos; -state=/Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/state/example2-NOT_SET/stack-example2-NOT_SET.tfstate</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_environment_configuration_files">Environment configuration files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It would be useful to set configuration options for multiple environments. This can be done by creating files in a folder called <code>./environments</code>, each file being named <code>stack-instance-ENVIRONMENT_NAME.yaml</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
+<span class="hljs-attr">  group:</span> sandbox
+<span class="hljs-attr">parameters:</span>
+<span class="hljs-attr">  environment_name:</span> sandbox</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This example overrides the <em>instance:group</em> value and the <em>environment_name</em> parameter, but you could override other variables as well.</p>
+</div>
+<div class="paragraph">
+<p>To use this with the stack tool, use the -e flag to pass the ENVIRONMENT_NAME to the tool:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry -e sandbox
+cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/example2-sandbox &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=sandbox&apos; -var &apos;instance_identifier=example2-sandbox&apos; -state=/Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/state/example2-sandbox/stack-example2-sandbox.tfstate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The stack tool looks for the environment configuration file based on the name passed to the -e flag.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rakefiles_and_multiple_stack_instances">Rakefiles and multiple stack instances</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create multiple <code>StackTask</code> instances in your rakefile, passing an environment string to each one. Like the stack command line tool, the stack rake task will search for the environment configuration file using this string, and use that to configure the stack instance.</p>
+</div>
+<div class="paragraph">
+<p>This example iterates over each environment name in an array, creating a namespace for each:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+<span class="hljs-keyword">include</span> <span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span>
+
+[<span class="hljs-string">&apos;sandbox&apos;</span>, <span class="hljs-string">&apos;staging&apos;</span>].each { |environment|
+  namespace <span class="hljs-string">&quot;<span class="hljs-subst">#{environment}</span>&quot;</span> <span class="hljs-keyword">do</span>
+    StackTask.new(environment).instance
+  <span class="hljs-keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the rake tasks are grouped by a namespace for each environment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ rake -T
+rake sandbox:down    # Destroy stack example2-sandbox
+rake sandbox:dry     # Show command line to be run for stack example2-sandbox
+rake sandbox:plan    # Plan changes to stack example2-sandbox
+rake sandbox:up      # Create or update stack example2-sandbox
+rake staging:down    # Destroy stack example2-staging
+rake staging:dry     # Show command line to be run for stack example2-staging
+rake staging:plan    # Plan changes to stack example2-staging
+rake staging:up      # Create or update stack example2-staging</code></pre>
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="stack-testing.html" class="navigation navigation-prev " aria-label="Previous page: Testing the simple stack">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="stack-parameters.html" class="navigation navigation-next " aria-label="Next page: Using parameters for stack instances">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Creating multiple stack instances","level":"1.2.4","depth":2,"next":{"title":"Using parameters for stack instances","level":"1.2.5","depth":2,"path":"part1/stack-parameters.adoc","ref":"part1/stack-parameters.adoc","articles":[]},"previous":{"title":"Testing the simple stack","level":"1.2.3","depth":2,"path":"part1/stack-testing.adoc","ref":"part1/stack-testing.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"part1/stack-multiple-instances.adoc","mtime":"2018-09-11T15:05:06.916Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,639 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Cloudspin instance configuration · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cloudspin-stack-roles.html" />
+    
+    
+    <link rel="prev" href="cloudspin-project-structure.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/">
+            
+                <a href="../part1/">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../part1/examples-setup.html">
+            
+                <a href="../part1/examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../part1/stack-starting.html">
+            
+                <a href="../part1/stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../part1/stack-testing.html">
+            
+                <a href="../part1/stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../part1/stack-multiple-instances.html">
+            
+                <a href="../part1/stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../part1/stack-parameters.html">
+            
+                <a href="../part1/stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../part1/stack-pipelines.html">
+            
+                <a href="../part1/stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../part1/stack-roles.html">
+            
+                <a href="../part1/stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="cloudspin-project-structure.html">
+            
+                <a href="cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="cloudspin-instance-configuration.html">
+            
+                <a href="cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="cloudspin-stack-roles.html">
+            
+                <a href="cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="stack-command-line.html">
+            
+                <a href="stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="cloudspin-ruby-api.html">
+            
+                <a href="cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="cloudspin-rake.html">
+            
+                <a href="cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="cloudspin-artefacts.html">
+            
+                <a href="cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Cloudspin instance configuration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="reference-cloudspin-stack-instance-configuration">Reference: Cloudspin stack instance configuration</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a number of configuration option types which may be customizable for each stack instance. For example, <strong>parameters</strong> are values that are passed to the infrastructure code (i.e. terraform variables) for the instance. <strong>Resources</strong> are configuration settings which are used to run terraform (and perhaps other tools), but not passed as variables to the terraform code. Examples of resources include AWS credential profiles and roles, and remote state configuration options.</p>
+</div>
+<div class="paragraph">
+<p><strong>Instance</strong> configuration options are used by cloudspin, see the reference details below.</p>
+</div>
+<div class="paragraph">
+<p>These parameters can be provided in different ways, depending on which tooling is used to manage a stack instance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stack_instance_configuration_files">Stack instance configuration files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>stack</strong> command line tool, and the default rake tasks, will look for the following yaml configuration files and load configuration from them if found:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>./stack-instance-defaults.yaml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>./stack-instance-local.yaml</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>By convention, the -defaults file is committed to source control, and so has values that may be useful to any instance of the stack.</p>
+</div>
+<div class="paragraph">
+<p>The -local file is not committed to source control, and so is used by developers to set values they want to use when managing stacks locally, typically while working on the stack definition code.</p>
+</div>
+<div class="paragraph">
+<p>Any configuration values found in <code>./stack-instance-local.yaml</code> will override values defined in <code>./stack-instance-defaults.yaml</code>.</p>
+</div>
+<div class="paragraph">
+<p>These yaml files (currently) have three top level groups of configuration: <strong>instance</strong>, <strong>parameters</strong>, and <strong>resources</strong>. Here&#x2019;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
+<span class="hljs-attr">  group:</span> sandbox
+<span class="hljs-attr">parameters:</span>
+<span class="hljs-attr">  region:</span> <span class="hljs-string">&quot;eu-west-1&quot;</span>
+<span class="hljs-attr">  availability_zones:</span> <span class="hljs-string">&quot;eu-west-1a,eu-west-1b,eu-west-1c&quot;</span>
+<span class="hljs-attr">resources:</span>
+<span class="hljs-attr">  aws_profile:</span> my-cloudspin-user
+<span class="hljs-attr">  assume_role_arn:</span> arn:aws:iam::<span class="hljs-number">000000000000</span>:role/my-cloudspin-iam-role</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>instance</strong> configuration options are used by cloudspin, although they are often also used within infrastructure code as well (e.g. to tag resources)</p>
+</li>
+<li>
+<p><strong>parameters</strong> are passed to the infrastructure code, i.e. as Terraform variables</p>
+</li>
+<li>
+<p><strong>resources</strong> are used by the infrastructure tool, i.e. Terraform, to configure things like authentication, statefile options, etc.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_overriding_the_instance_configuration_file_locations">Overriding the instance configuration file locations</h3>
+<div class="paragraph">
+<p>Both the command line tool, and the rake task, can override the list of configuration files that will be loaded. See the respective references for them for more information on how to do this.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_stack_instance_variables">Special stack instance variables</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Where it&#x2019;s set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stack:name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the stack definition.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This will be set automatically by cloudspin when creating the StackInstance from the definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stack:role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configurations that can be applied to a stack definition for a particular purpose. See <a href="cloudspin-stack-roles.html">roles</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This would normally be set in a file in <code>./roles</code>. But it hasn&#x2019;t been implemented yet, so we&#x2019;ll see.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instance:group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An ID that is used to tie a collection of stack instances together. This is usually an environment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usually set in the instance configuration file (instance:group), although it could be overridden on the command line, or by passing something into a rake task.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instance:liveset (TBC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An ID used to allow multiple instances to co-exist for a period, for instance for blue-green, canary, or other interesting deployment strategies.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not implemented yet, who knows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instance_identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A unique name across all stack instances.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See below.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_stack_instance_identifier">Stack instance identifier</h3>
+<div class="paragraph">
+<p>Cloudspin sets and uses a string named <strong>instance_identifier</strong> for multiple purposes. It is assumed to be unique across all stack instances (within a given AWS account, and within any collections of stacks that might be integrated in any way). By convention, it will be used to name various files that cloudspin uses, which may include working files, statefiles, configuration registry entries, etc.</p>
+</div>
+<div class="paragraph">
+<p>The instance_identifier can be set explicitly in various ways, e.g. as a command line parameter to the <em>stack</em> tool, parameters passed to cloudspin-rake tasks, or in a stack instance configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
+<span class="hljs-attr">  identifier:</span> example1-sandbox</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the variable is not explicitly set, cloudspin will generate it, setting it to <strong>stack:name</strong>-<strong>stack:role</strong>-<strong>instance:group</strong>. If either or both of <em>stack:role</em> and <em>instance:group</em> are not set, they will not be included in the name (and neither will the dashes.)</p>
+</div>
+<div class="paragraph">
+<p>So example values for instance_identifier include:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">stack:name</th>
+<th class="tableblock halign-left valign-top">stack:role</th>
+<th class="tableblock halign-left valign-top">instance:group</th>
+<th class="tableblock halign-left valign-top">value of <code>instance_identifer</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myapp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">staging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>webserver-myapp-staging</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">staging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>webserver-staging</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myapp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>webserver-myapp</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>webserver</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="cloudspin-project-structure.html" class="navigation navigation-prev " aria-label="Previous page: Cloudspin project structure">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cloudspin-stack-roles.html" class="navigation navigation-next " aria-label="Next page: Cloudspin stack roles">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cloudspin instance configuration","level":"1.3.2","depth":2,"next":{"title":"Cloudspin stack roles","level":"1.3.3","depth":2,"path":"reference/cloudspin-stack-roles.adoc","ref":"reference/cloudspin-stack-roles.adoc","articles":[]},"previous":{"title":"Cloudspin project structure","level":"1.3.1","depth":2,"path":"reference/cloudspin-project-structure.adoc","ref":"reference/cloudspin-project-structure.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"reference/cloudspin-instance-configuration.adoc","mtime":"2018-09-10T15:01:47.516Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

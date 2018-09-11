@@ -1,0 +1,603 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Cloudspin Rake tasks · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cloudspin-artefacts.html" />
+    
+    
+    <link rel="prev" href="cloudspin-ruby-api.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/">
+            
+                <a href="../part1/">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../part1/examples-setup.html">
+            
+                <a href="../part1/examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../part1/stack-starting.html">
+            
+                <a href="../part1/stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../part1/stack-testing.html">
+            
+                <a href="../part1/stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../part1/stack-multiple-instances.html">
+            
+                <a href="../part1/stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../part1/stack-parameters.html">
+            
+                <a href="../part1/stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../part1/stack-pipelines.html">
+            
+                <a href="../part1/stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../part1/stack-roles.html">
+            
+                <a href="../part1/stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="cloudspin-project-structure.html">
+            
+                <a href="cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="cloudspin-instance-configuration.html">
+            
+                <a href="cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="cloudspin-stack-roles.html">
+            
+                <a href="cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="stack-command-line.html">
+            
+                <a href="stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="cloudspin-ruby-api.html">
+            
+                <a href="cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.6" data-path="cloudspin-rake.html">
+            
+                <a href="cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="cloudspin-artefacts.html">
+            
+                <a href="cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Cloudspin Rake tasks</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="cloudspin-rake-task-reference">Cloudspin rake task reference</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As introduced in the guide to <a href="../part1/stack-starting.html">creating a simple stack</a>, you can include cloudspin tasks in a Rakefile to help you manage stack instances according to the <a href="cloudspin-project-structure.html">stack project structure</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_the_gem_in_your_project">Installing the gem in your project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the cloudspin rake tasks, you&#x2019;ll need to add a Gemfile and Rakefile to your project. The Gemfile should add the <code>cloudspin-stack-rake</code> gem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">gem <span class="hljs-string">&apos;cloudspin-stack-rake&apos;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This gem has <code>cloudspin-stack</code> as a dependency, so that gem will also be installed by default, along with a few other dependencies. See the source code for <a href="https://github.com/cloudspinners/cloudspin-stack" target="_blank">cloudspin-stack</a> and <a href="https://github.com/cloudspinners/cloudspin-stack-rake" target="_blank">cloudspin-stack-rake</a>.</p>
+</div>
+<div class="paragraph">
+<p>Run <code>bundle install</code> to actually install the gems into your project. This will create a <code>Gemfile.lock</code> file, which you can add to your project in source control so that consistent versions of the gems are used wherever the project is checked out and run.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_rake_tasks_for_a_single_stack_instance">Basic rake tasks for a single stack instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By creating an instance of the ruby <strong>StackTask</strong> class in your Rakefile, a set of tasks are created to manage a stack instance.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+
+<span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:StackTask</span>.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This assumes that the <code>./src/stack-definition.yaml</code> exists. It will also look for <code>./stack-instance-defaults.yaml</code> and <code>./stack-instance-local.yaml</code>, and use these for parameters to pass to terraform. If the Terraform source code under <code>./src</code> declares variables without defaults, they will need to be declared in one of these files.</p>
+</div>
+<div class="sect2">
+<h3 id="_simplifying_stacktask_declarations">Simplifying StackTask declarations</h3>
+<div class="paragraph">
+<p>If you include the module in your rakefile, the code to declare the tasks becomes simpler, which helps if you go beyond the very simple example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+<span class="hljs-keyword">include</span> <span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span>
+
+StackTask.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_namespaces">Namespaces</h3>
+<div class="paragraph">
+<p>In the above example, the tasks are created in the root namespace. But as you add more things to your rakefile, namespaces are useful to organize code and tasks. Simply wrap the StackTask declaration in a namespace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;rake/clean&apos;</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+
+CLEAN.<span class="hljs-keyword">include</span>(<span class="hljs-string">&apos;work&apos;</span>)
+CLEAN.<span class="hljs-keyword">include</span>(<span class="hljs-string">&apos;build&apos;</span>)
+CLOBBER.<span class="hljs-keyword">include</span>(<span class="hljs-string">&apos;state&apos;</span>)
+
+<span class="hljs-keyword">include</span> <span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span>
+
+namespace <span class="hljs-symbol">:network</span> <span class="hljs-keyword">do</span>
+  StackTask.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance
+<span class="hljs-keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This makes the task list a bit more organized:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rake -T
+rake clean          <span class="hljs-comment"># Remove any temporary products</span>
+rake clobber        <span class="hljs-comment"># Remove any generated files</span>
+rake network:down   <span class="hljs-comment"># Destroy stack test-network</span>
+rake network:dry    <span class="hljs-comment"># Show command line to be run for stack test-network</span>
+rake network:plan   <span class="hljs-comment"># Plan changes to stack test-network</span>
+rake network:up     <span class="hljs-comment"># Create or update stack test-network</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_multiple_instances">Multiple instances</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inspec_task_for_testing">Inspec task for testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The cloudspin-stack-rake library includes a task for running <a href="https://www.inspec.io/docs/" target="_blank">Inspec</a> tests against a stack instance. It assumes the inspec profile(s) are in <code>./test/inspec</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_including_the_inspec_task_in_the_rakfile">Including the inspec task in the rakfile:</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">include</span> <span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span>
+
+stack = StackTask.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance
+InspecTask.new(<span class="hljs-symbol">stack_instance:</span> stack)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inspec_attributes">Inspec attributes</h3>
+<div class="paragraph">
+<p>All stack instance attributes (as described in <a href="cloudspin-project-structure.html">the project structure reference guide</a>) defined for the stack instance to be tested are made available as Inspec attributes, so they can be used in tests.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">aws_region = attribute(<span class="hljs-string">&apos;region&apos;</span>, <span class="hljs-symbol">description:</span> <span class="hljs-string">&apos;aws region&apos;</span>)
+describe aws_region <span class="hljs-keyword">do</span>
+  it <span class="hljs-string">&apos;region attribute should be available&apos;</span> <span class="hljs-keyword">do</span>
+    expect(subject).not_to eq(<span class="hljs-string">&apos;&apos;</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_files_generated_by_the_inspec_task">Files generated by the inspec task:</h3>
+<div class="paragraph">
+<p>An inspec attribute file is automatically generated in <code>./work/inspec/attributes-for-stack-INSTANCE_NAME.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>The log output from the inspec run, including stack traces, is generated in <code>./work/inspec/results-for-stack-INSTANCE_NAME-profile-PROFILE_NAME.json</code>. <em>PROFILE_NAME</em> is set in the inspec profile file (<code>./test/inspec/inspec.yml</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_artefact_management">Artefact management</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="cloudspin-ruby-api.html" class="navigation navigation-prev " aria-label="Previous page: Cloudspin Ruby classes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cloudspin-artefacts.html" class="navigation navigation-next " aria-label="Next page: Cloudspin Artefacts">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cloudspin Rake tasks","level":"1.3.6","depth":2,"next":{"title":"Cloudspin Artefacts","level":"1.3.7","depth":2,"path":"reference/cloudspin-artefacts.adoc","ref":"reference/cloudspin-artefacts.adoc","articles":[]},"previous":{"title":"Cloudspin Ruby classes","level":"1.3.5","depth":2,"path":"reference/cloudspin-ruby-api.adoc","ref":"reference/cloudspin-ruby-api.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"reference/cloudspin-rake.adoc","mtime":"2018-09-10T12:44:38.897Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

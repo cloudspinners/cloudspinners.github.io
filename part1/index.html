@@ -1,0 +1,546 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Basic stacks · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="examples-setup.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="examples-setup.html">
+            
+                <a href="examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="stack-starting.html">
+            
+                <a href="stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="stack-testing.html">
+            
+                <a href="stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="stack-multiple-instances.html">
+            
+                <a href="stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="stack-parameters.html">
+            
+                <a href="stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="stack-pipelines.html">
+            
+                <a href="stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="stack-roles.html">
+            
+                <a href="stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../reference/README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../reference/cloudspin-project-structure.html">
+            
+                <a href="../reference/cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../reference/cloudspin-instance-configuration.html">
+            
+                <a href="../reference/cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../reference/cloudspin-stack-roles.html">
+            
+                <a href="../reference/cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../reference/stack-command-line.html">
+            
+                <a href="../reference/stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../reference/cloudspin-ruby-api.html">
+            
+                <a href="../reference/cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../reference/cloudspin-rake.html">
+            
+                <a href="../reference/cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../reference/cloudspin-artefacts.html">
+            
+                <a href="../reference/cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Basic stacks</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="what-is-a-stack">What is a stack?</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-note" title="Note">&#xF05A;</div>
+</td>
+<td class="content">
+Based on a blog post on <a href="http://infrastructure-as-code.com/patterns/2018/03/28/defining-stacks.html" target="_blank">infrastructure-as-code.com</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The term <em>Infrastructure Stack</em> is something I&#x2019;ve found useful to explain different patterns for organizing infrastructure code. An infrastructure stack is a collection of infrastructure elements defined and changed as a unit. Stacks are typically managed by tools such as <a href="https://www.terraform.io/" target="_blank">Hashicorp Terraform</a>, <a href="https://aws.amazon.com/cloudformation/" target="_blank">AWS CloudFormation</a>, <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview" target="_blank">Azure Resource Manager Templates</a>, <a href="https://cloud.google.com/deployment-manager/" target="_blank">Google Cloud Deployment Manager Templates</a> and <a href="https://wiki.openstack.org/wiki/Heat" target="_blank">OpenStack Heat</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/infrastructure-stack.png" alt="An infrastructure stack is a collection of infrastructure elements managed as a unit"></span></p>
+</div>
+<div class="paragraph">
+<p>AWS CloudFormation uses the term <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html" target="_blank">&quot;stack&quot;</a>, but it maps to other tools as well. When using Terraform, which I tend to use for code examples, a stack correlates to a Terraform project, and a statefile.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stack_definitions">Stack definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A stack definition is the code that declares what a stack should be. It is a Terraform project, CloudFormation template, and so on. A stack definition may use shared infrastructure code - for example, <a href="https://aws.amazon.com/blogs/devops/use-nested-stacks-to-create-reusable-templates-and-support-role-specialization/" target="_blank">CloudFormation nested stacks</a> or <a href="https://www.terraform.io/docs/modules/index.html" target="_blank">Terraform modules</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/stack-definition.png" alt="A stack definition is code used to provision stack instances"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stack_instances">Stack instances</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A stack definition can be used to provision, and update, one or more stack instances. There are two typical use cases for this.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/stack-instances.png" alt="Multiple stack instances can be provisioned from a single stack definition"></span></p>
+</div>
+<div class="paragraph">
+<p>One use case is for multiple environments. If you have a stack called &quot;my-service-stack&quot;, you can create an instance of your stack in DEV, another in QA, another in PROD, etc. Because you use the same stack definition for each of these, you know they are consistent in each environment. This is explained in more detail in <a href="stack-multiple-instances.html">creating multiple stack instances</a>.</p>
+</div>
+<div class="paragraph">
+<p>Another use case for re-using a stack definition for multiple roles. For example, if you have a general purpose stack that defines the infrastructure for a service, you might use it for &quot;serviceA-stack&quot; and &quot;serviceB-stack&quot;. A given environment might have stack instances for each of these roles.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-note" title="Note">&#xF05A;</div>
+</td>
+<td class="content">
+<a href="https://twitter.com/techiewatt" target="_blank">Nicki Watt</a> has a great talk on <a href="https://www.youtube.com/watch?v=wgzgVm7Sqlk" target="_blank">Evolving Your Infrastructure with Terraform</a> which very clearly explains the benefits of using a stack definition for multiple instances, although she doesn&#x2019;t use exactly the same terminology that I do.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a_note_on_state">A note on state</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-note" title="Note">&#xF05A;</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>One of the pain points of using Terraform is dealing with <a href="https://www.terraform.io/docs/state/" target="_blank">statefiles</a>. All stack management tools, including CloudFormation, etc., maintain data structures that reflect which infrastructure elements belong to a given stack instance.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/stack-state.png" alt="Stack state"></span></p>
+</div>
+<div class="paragraph">
+<p>CloudFormation and similar tools provided by cloud platform vendors have the advantage of being able to manage instance state transparently - they keep these data structures on their servers. Terraform and other third party tools need to do this themselves.</p>
+</div>
+<div class="paragraph">
+<p>Arguably, the explicit state management of Terraform gives you more control and transparency. When your CloudFormation stack gets wedged, you can&#x2019;t examine the state data structures to see what&#x2019;s happening. And you (and third parties) have the option of writing tools that use the state data for various purposes. But it does require you to put a bit more work into keeping track of statefiles and making sure they&#x2019;re available when running the stack management tool.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: CloudSpin Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="examples-setup.html" class="navigation navigation-next " aria-label="Next page: Prerequisites for running the example code">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Basic stacks","level":"1.2","depth":1,"next":{"title":"Prerequisites for running the example code","level":"1.2.1","depth":2,"path":"part1/examples-setup.adoc","ref":"part1/examples-setup.adoc","articles":[]},"previous":{"title":"CloudSpin Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"part1/README.adoc","mtime":"2018-09-06T08:27:33.597Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

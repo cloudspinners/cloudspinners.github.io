@@ -1,0 +1,669 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Creating a simple stack · CloudSpin Reference</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kief Morris">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="stack-testing.html" />
+    
+    
+    <link rel="prev" href="examples-setup.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    CloudSpin Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Basic stacks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="examples-setup.html">
+            
+                <a href="examples-setup.html">
+            
+                    
+                    Prerequisites for running the example code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="stack-starting.html">
+            
+                <a href="stack-starting.html">
+            
+                    
+                    Creating a simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="stack-testing.html">
+            
+                <a href="stack-testing.html">
+            
+                    
+                    Testing the simple stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="stack-multiple-instances.html">
+            
+                <a href="stack-multiple-instances.html">
+            
+                    
+                    Creating multiple stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="stack-parameters.html">
+            
+                <a href="stack-parameters.html">
+            
+                    
+                    Using parameters for stack instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="stack-pipelines.html">
+            
+                <a href="stack-pipelines.html">
+            
+                    
+                    Delivering the stack using a pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="stack-roles.html">
+            
+                <a href="stack-roles.html">
+            
+                    
+                    Using a stack definition for multiple roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../reference/README.adoc">
+            
+                <span>
+            
+                    
+                    Reference topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../reference/cloudspin-project-structure.html">
+            
+                <a href="../reference/cloudspin-project-structure.html">
+            
+                    
+                    Cloudspin project structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../reference/cloudspin-instance-configuration.html">
+            
+                <a href="../reference/cloudspin-instance-configuration.html">
+            
+                    
+                    Cloudspin instance configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../reference/cloudspin-stack-roles.html">
+            
+                <a href="../reference/cloudspin-stack-roles.html">
+            
+                    
+                    Cloudspin stack roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../reference/stack-command-line.html">
+            
+                <a href="../reference/stack-command-line.html">
+            
+                    
+                    Stack command line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../reference/cloudspin-ruby-api.html">
+            
+                <a href="../reference/cloudspin-ruby-api.html">
+            
+                    
+                    Cloudspin Ruby classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../reference/cloudspin-rake.html">
+            
+                <a href="../reference/cloudspin-rake.html">
+            
+                    
+                    Cloudspin Rake tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../reference/cloudspin-artefacts.html">
+            
+                <a href="../reference/cloudspin-artefacts.html">
+            
+                    
+                    Cloudspin Artefacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Creating a simple stack</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="creating-a-simple-stack">Creating a simple stack</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section examines the basic parts of a cloudspin stack definition project, and the basic lifecycle of a stack instance.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="examples-setup.html">the setup instructions</a> for what you need to install and configure to be ready to run this example.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_example_source_code">The example source code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is in the folder examples/01-basic-stack, available from github at <a href="https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/01-basic-stack" class="bare" target="_blank">https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/01-basic-stack</a></p>
+</div>
+<div class="paragraph">
+<p>This stack simply creates a VPC, and private and public subnets. It isn&#x2019;t particularly useful on its own, since it has no gateways (internet gateway for inbound access, or NAT gateway for outbound), and doesn&#x2019;t even have routes for traffic within the VPC. But it&#x2019;s a start.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_stack_definition_source">The stack definition source</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>./src</code> subfolder of the project contains the Terraform files which are used to create instances of the stack.</p>
+</div>
+<div class="paragraph">
+<p>This is a standard Terraform project, you could run the terraform command in it, assuming you provide the required variable, and that you have valid aws credentials as the default profile in <code>~/.aws/credentials</code>, or in the relevant evironment variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cd src
+terraform init
+terraform plan -var instance_identifier=basic-01-manual</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should include (among lots of other output) something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+... &lt;lots of stuff&gt; ...
+
+Plan: 7 to add, 0 to change, 0 to destroy.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cloudstack provides some tooling to run Terraform. For this example, there&#x2019;s no obvious value, but when you start doing more complicated things, this becomes handier. So let&#x2019;s start using it even for this simple stack, to build an understanding of how it works.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_command_line_tool">Using the command line tool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>stack</code> command-line tool, included in the <code>cloudspin-stack</code> gem, can be used to manage stack instances from a stack definition. The main benefit it adds over using the terraform command directly is that it follows certain conventions for finding and passing parameters to an instance, that will make it easier to manage multiple instances from a single stack definition in a consistent way. It also follows conventions for files are organized in the project.</p>
+</div>
+<div class="paragraph">
+<p>For the example stack, change back into the base folder of the example code (<code>cd ..</code> if you ran the commands above), and run the <code>up</code> command with the <code>--dry</code> option to see the terraform command that will be run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">stack up --dry</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should be similar to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry
+cd ./work &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;instance_identifier=basic-stack-01&apos; -state=/Users/you/cloudspin-reference/part1/examples/01-basic-stack/state/stack-basic-stack-01.tfstate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here you can see that, rather than running the project within the ./src folder, the stack tool copies the source code to another folder, and also stores the local state in a folder it creates. This helps later when creating multiple instances, so that each instance has its own copy of relevant files, rather than stepping on one another and potentially losing state.</p>
+</div>
+<div class="paragraph">
+<p>You can run the terraform plan command by passing the <code>--plan</code> parameter to the <code>up</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">stack up --plan</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output for this should be similar to when you ran terraform earlier.</p>
+</div>
+<div class="paragraph">
+<p>To destroy the stack, run <code>stack down</code>. You can optionally pass <code>--dry</code> to see the terraform command that will be run, and/or <code>--plan</code>, to see the changes that will be made to destroy the stack.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">stack down</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_of_the_command_line">Summary of the command line</h3>
+<div class="paragraph">
+<p>The basic commands, as seen in the examples above, are:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stack up</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create or modify the stack instance, using the terraform source found in <code>./src</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stack down</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Destroy the stack instance</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Both of these commands take the following options:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--dry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Print the terraform command line that will be run, but don&#x2019;t actually run it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run the terraform plan command</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <a href="../reference/stack-command-line.html">stack command line tool reference</a> has detailed information on the tool, and the <a href="../reference/cloudspin-project-structure.html">cloudspin stack project reference</a> has more information on the project structure and configuration files.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_a_rakefile">Using a Rakefile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Rakefile allows you to incorporate more actions and logic into managing your stack and related things.</p>
+</div>
+<div class="sect2">
+<h3 id="_basic_rake_tasks">Basic rake tasks</h3>
+<div class="paragraph">
+<p>To use the cloudspin rake tasks, you&#x2019;ll need to add a Gemfile and Rakefile to your project. The Gemfile should add the <code>cloudspin-stack-rake</code> gem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">gem <span class="hljs-string">&apos;cloudspin-stack-rake&apos;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run <code>bundle install</code> to actually install the gem, and its dependencies, into your project. This will create a <code>Gemfile.lock</code> file, which you can add to your project in source control so that consistent versions of the gems are used wherever the project is checked out and run.</p>
+</div>
+<div class="paragraph">
+<p>The Rakefile has the logic of the builds. The basic elements for using cloudspin are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+
+<span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:StackTask</span>.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This names the stack instance that will be created <strong>test-network</strong>. When you list the available rake tasks from the command line you see what cloudspin has added:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rake -T
+rake down  <span class="hljs-comment"># Destroy stack test-network</span>
+rake dry   <span class="hljs-comment"># Show command line to be run for stack test-network</span>
+rake plan  <span class="hljs-comment"># Plan changes to stack test-network</span>
+rake up    <span class="hljs-comment"># Create or update stack test-network</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see these are variations of the command line tool commands seen above. You have <strong>up</strong> and <strong>down</strong> to create/update and destroy the stack instance. The <strong>dry</strong> and <strong>plan</strong> tasks are applied to the <strong>up</strong> command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_a_clean_task">Adding a clean task</h3>
+<div class="paragraph">
+<p>The benefit of using rake is you can add more capabilities. You can easily import the capability for rake to clean up working directories for you:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;rake/clean&apos;</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&apos;cloudspin/stack/rake&apos;</span>
+
+CLEAN.<span class="hljs-keyword">include</span>(<span class="hljs-string">&apos;work&apos;</span>)
+CLOBBER.<span class="hljs-keyword">include</span>(<span class="hljs-string">&apos;state&apos;</span>)
+
+<span class="hljs-symbol">Cloudspin:</span><span class="hljs-symbol">:Stack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:Rake</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:StackTask</span>.new(<span class="hljs-symbol">id:</span> <span class="hljs-string">&apos;test-network&apos;</span>).instance</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this, running <code>rake clean</code> will remove the <strong>work</strong> directory, which contains the working files used for the instance. <code>rake clobber</code> takes the more drastic step of also deleting the <strong>state</strong> directory, which deletes the local statefile. You should only run this after successfully running <code>rake down</code>, otherwise your stack instance will remain in the cloud, and you will no longer be able to use cloudspin (or terraform) to manage it.</p>
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="examples-setup.html" class="navigation navigation-prev " aria-label="Previous page: Prerequisites for running the example code">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="stack-testing.html" class="navigation navigation-next " aria-label="Next page: Testing the simple stack">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Creating a simple stack","level":"1.2.2","depth":2,"next":{"title":"Testing the simple stack","level":"1.2.3","depth":2,"path":"part1/stack-testing.adoc","ref":"part1/stack-testing.adoc","articles":[]},"previous":{"title":"Prerequisites for running the example code","level":"1.2.1","depth":2,"path":"part1/examples-setup.adoc","ref":"part1/examples-setup.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"part1/stack-starting.adoc","mtime":"2018-09-11T10:13:46.149Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-11T15:51:22.412Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
