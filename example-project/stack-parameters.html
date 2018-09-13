@@ -455,63 +455,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="using-parameters-for-stack-instances">Using parameters for stack instances</h1>
-<div class="sect1">
-<h2 id="_example_of_parameterized_infrastructure">Example of parameterized infrastructure</h2>
-<div class="sectionbody">
+                                <h1 id="setting-configuration-parameters-for-a-stack-instance">Setting configuration parameters for a stack instance</h1>
 <div class="paragraph">
-<p>I have an example of a <a href="https://github.com/kief/spin-template-standalone-service" target="_blank">parameterized infrastructure stack project</a> on github, using Terraform and AWS. Below is a (trimmed) snippet of code for a webserver.</p>
+<p>Stack parameters are passed as variables to the stack definition code, i.e. as variables to be used in the Terraform code. Values can be passed to configure instances differently for different environments.</p>
+</div>
+<div class="paragraph">
+<p>Cloudspin (will) support multiple methods for setting variables, listed here from lowest precedence to highest.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>./stack-instance-defaults.yaml</code></p>
+</li>
+<li>
+<p>(<code>,.roles/stack-instance-ROLE.yaml</code>) (NOT IMPLEMENTED YET)</p>
+</li>
+<li>
+<p><code>./environments/stack-instance-ENVIRONMENT.yaml</code></p>
+</li>
+<li>
+<p>(Configuration registry) (NOT IMPLEMENTED YET)</p>
+</li>
+<li>
+<p><code>./stack-instance-local.yaml</code></p>
+</li>
+<li>
+<p>(Command-line arguments / Rake task arguments) (NOT IMPLEMENTED YET)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In each of the configuration files, these parameters are set in a <em>parameters</em> block:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-terraform" data-lang="terraform">resource &quot;aws_instance&quot; &quot;webserver&quot; {
-  ...
-  tags {
-    Name                  = &quot;webserver-${var.service}-${var.component}-${var.deployment_id}&quot;
-    DeploymentIdentifier  = &quot;${var.deployment_id}&quot;
-    Service               = &quot;${var.service}&quot;
-    Component             = &quot;${var.component}&quot;
-  }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This shows how it a number of variables are used to set tags, including a Name tag, to distinguish this server instance from other instances of the same server in other stack instances.</p>
-</div>
-<div class="paragraph">
-<p>These variables are passed to the terraform command by a Makefile:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">TERRAFORM_VARS=\
-  -var <span class="hljs-string">&quot;deployment_id=<span class="hljs-variable">$(DEPLOYMENT_ID)</span>&quot;</span> \
-  -var <span class="hljs-string">&quot;component=<span class="hljs-variable">$(COMPONENT)</span>&quot;</span> \
-  -var <span class="hljs-string">&quot;service=<span class="hljs-variable">$(SERVICE)</span>&quot;</span>
-
-up: init <span class="hljs-comment">## Create or update the stack</span>
-  terraform apply $(TERRAFORM_VARS) -auto-approve</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>SERVICE</code> and <code>COMPONENT</code> variables are set by a file in the stack definition project, and are always the same. The <code>DEPLOYMENT_ID</code> variable is passed to the Makefile when make is run. The pipeline stage configuration sets this, so for example, the production stage configuration (using AWS CodeBuild in this case) includes the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>resource &quot;aws_codebuild_project&quot; &quot;prodapply-project&quot; {
-  name = &quot;${var.service}-${var.component}-${var.estate_id}-ApplyToProdEnvironment&quot;
-  ...
-
-  environment {
-    environment_variable {
-      &quot;name&quot;  = &quot;DEPLOYMENT_ID&quot;
-      &quot;value&quot; = &quot;prod&quot;
-    }
-  }</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The codebuild project simply runs <code>make up</code>, and our stack definition creates our webserver instance accordingly.</p>
-</div>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">parameters:</span>
+<span class="hljs-attr">  region:</span> <span class="hljs-string">&quot;eu-west-1&quot;</span>
+<span class="hljs-attr">  availability_zones:</span> <span class="hljs-string">&quot;eu-west-1a,eu-west-1b,eu-west-1c&quot;</span>
+<span class="hljs-attr">  environment_name:</span> NOT_SET</code></pre>
 </div>
 </div>
                                 
@@ -556,7 +537,7 @@ up: init <span class="hljs-comment">## Create or update the stack</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Using parameters for stack instances","level":"1.3.5","depth":2,"next":{"title":"Delivering the stack using a pipeline","level":"1.3.6","depth":2,"path":"example-project/stack-pipelines.adoc","ref":"example-project/stack-pipelines.adoc","articles":[]},"previous":{"title":"Creating multiple stack instances","level":"1.3.4","depth":2,"path":"example-project/stack-multiple-instances.adoc","ref":"example-project/stack-multiple-instances.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"example-project/stack-parameters.adoc","mtime":"2018-09-06T08:20:22.547Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-13T09:06:21.194Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Using parameters for stack instances","level":"1.3.5","depth":2,"next":{"title":"Delivering the stack using a pipeline","level":"1.3.6","depth":2,"path":"example-project/stack-pipelines.adoc","ref":"example-project/stack-pipelines.adoc","articles":[]},"previous":{"title":"Creating multiple stack instances","level":"1.3.4","depth":2,"path":"example-project/stack-multiple-instances.adoc","ref":"example-project/stack-multiple-instances.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"example-project/stack-parameters.adoc","mtime":"2018-09-13T14:37:10.365Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-13T14:39:34.248Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
