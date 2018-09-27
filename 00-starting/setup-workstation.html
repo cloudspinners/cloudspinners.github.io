@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Setting up for the tutorials · CloudSpin Reference</title>
+        <title>Set up your local tools · CloudSpin Reference</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../01-basic-stack/todo.adoc" />
+    <link rel="next" href="setup-aws.html" />
     
     
     <link rel="prev" href="./" />
@@ -140,12 +140,51 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.2" data-path="examples-setup.html">
+        <li class="chapter active" data-level="2.1.2" data-path="setup-workstation.html">
             
-                <a href="examples-setup.html">
+                <a href="setup-workstation.html">
             
                     
-                    Setting up for the tutorials
+                    Set up your local tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="setup-aws.html">
+            
+                <a href="setup-aws.html">
+            
+                    
+                    Bootstrap your AWS account
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="setup-statebucket.html">
+            
+                <a href="setup-statebucket.html">
+            
+                    
+                    Set up a remote state bucket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="setup-iam-roles.html">
+            
+                <a href="setup-iam-roles.html">
+            
+                    
+                    Set up IAM roles
             
                 </a>
             
@@ -258,38 +297,6 @@
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.4.1" data-path="../03-aws-setup/todo.adoc">
-            
-                <span>
-            
-                    
-                    Defining IAM roles
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.4.2" data-path="../03-aws-setup/todo.adoc">
-            
-                <span>
-            
-                    
-                    Setting up remote state
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -618,6 +625,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.1.8" data-path="../reference/todo.adoc">
+            
+                <span>
+            
+                    
+                    Terraform Statefiles with Cloudspin
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -724,7 +744,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Setting up for the tutorials</a>
+        <a href=".." >Set up your local tools</a>
     </h1>
 </div>
 
@@ -739,12 +759,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="prerequisites">Prerequisites</h1>
-<div class="sect1">
-<h2 id="_workstation">Workstation</h2>
+                                <h1 id="setting-up-your-local-development-environment">Setting up your local development environment</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>I develop and test this stuff using a Mac, so my examples tend to be based on this. Everything should work on Linux and even Windows, but you&#x2019;ll probably have to roll up your sleeves a bit to get it working for yourself.</p>
+<p>I develop and test this stuff using a Mac, so my examples tend to be based on this. Everything should work on Linux and even Windows, but you&#x2019;ll probably have to roll up your sleeves a bit to get it working for yourself. Pull requests to this document are welcome!</p>
 </div>
 <div class="paragraph">
 <p>Things you&#x2019;ll need to install:</p>
@@ -752,75 +771,38 @@
 <div class="ulist">
 <ul>
 <li>
+<p><a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI</a></p>
+</li>
+<li>
+<p>Ruby 2.4+</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You&#x2019;ll also need a decent editor.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_on_a_mac">Setting up on a Mac</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
 <p>AWS CLI (<code>brew install awscli</code>)</p>
 </li>
 <li>
-<p>Ruby 2.4 or higher (I use rvm)</p>
+<p>Ruby 2.4 or higher (I use <a href="https://rvm.io/" target="_blank">rvm</a>)</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_aws_account_and_credentials">AWS account and credentials</h2>
+<h2 id="_getting_the_source_code">Getting the source code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You need an AWS account and API credentials. I strongly recommend you don&#x2019;t use your root account for this, set up an IAM user with more limited role. I recommend you set up an account with very little access other than assume-role, then create an IAM role to assume. (We need instructions for this, at least a link to docs).</p>
-</div>
-<div class="paragraph">
-<p>The example code is set up to assume an IAM role, to support this way of working.</p>
-</div>
-<div class="paragraph">
-<p>In your aws credentials file, put the API keys for a user with the right to assume role:</p>
-</div>
-<div class="paragraph">
-<p>~/.aws/credentials</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[my-cloudspin-user]</span>
-<span class="hljs-attr">aws_access_key_id</span> = AKIAxxxxxxxxxxxxxxxx
-<span class="hljs-attr">aws_secret_access_key</span> = blahblahblah</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create an IAM role in your AWS account. It should probably be in the Power User group, maybe Administrators for examples later on that do IAM configuration.</p>
-</div>
-<div class="paragraph">
-<p>In your aws profile config file, create a profile that indicates this IAM role:</p>
-</div>
-<div class="paragraph">
-<p>~/.aws/config</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[profile assume-my-cloudspin-role]</span>
-<span class="hljs-attr">role_arn</span> = arn:aws:iam::<span class="hljs-number">000000000000</span>:role/my-cloudspin-iam-role
-<span class="hljs-attr">source_profile</span> = my-cloudspin-user</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the cloudspin code examples, when creating an instance you will normally need to pass the names of these two profiles, typically in a configuration file:</p>
-</div>
-<div class="paragraph">
-<p>~/myproject/stack-instance-local.yaml</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">resources:</span>
-<span class="hljs-attr">  aws_profile:</span> my-cloudspin-user
-<span class="hljs-attr">  assume_role_profile:</span> assume-my-cloudspin-role
-<span class="hljs-attr">  assume_role_arn:</span> arn:aws:iam::<span class="hljs-number">000000000000</span>:role/my-cloudspin-iam-role</code></pre>
-</div>
-</div>
-</div>
-</div>
-<h1 id="_project_setup" class="sect0">Project setup</h1>
-<div class="sect1">
-<h2 id="_source_code">Source code</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://github.com/cloudspinners/cloudspin-reference-examples" target="_blank">Source code on github</a></p>
+<p>Clone the <a href="https://github.com/cloudspinners/cloudspin-reference-examples" target="_blank">example source code from github</a>. These instructions normally assume you have cloned this to <code>~/projects/spin/cloudspin-reference-examples</code>.</p>
 </div>
 </div>
 </div>
@@ -829,6 +811,12 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>For each cloudspin project, you will typically need to run <code>bundle install</code> before using it, to install Ruby dependencies that are used by the tools.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"><span class="hljs-built_in">cd</span> ~/projects/spin/cloudspin-reference-examples/01-basic-stack
+bundle install</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>You may also want to install <code>gem install cloudspin-stack</code> globally, to get the <code>stack</code> command-line tool. (I haven&#x2019;t found a convenient way to have this usable within a project without needing to run <code>bundle exec stack</code>).</p>
@@ -866,7 +854,7 @@
                 </a>
                 
                 
-                <a href="../01-basic-stack/todo.adoc" class="navigation navigation-next " aria-label="Next page: Tutorial 01 - creating a simple stack">
+                <a href="setup-aws.html" class="navigation navigation-next " aria-label="Next page: Bootstrap your AWS account">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -877,7 +865,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Setting up for the tutorials","level":"2.1.2","depth":2,"next":{"title":"Tutorial 01 - creating a simple stack","level":"2.2","depth":1,"path":"01-basic-stack/todo.adoc","ref":"01-basic-stack/todo.adoc","articles":[{"title":"Creating a simple stack","level":"2.2.1","depth":2,"path":"01-basic-stack/stack-starting.adoc","ref":"01-basic-stack/stack-starting.adoc","articles":[]},{"title":"Testing the simple stack","level":"2.2.2","depth":2,"path":"01-basic-stack/stack-testing.adoc","ref":"01-basic-stack/stack-testing.adoc","articles":[]}]},"previous":{"title":"Concept: What is a stack?","level":"2.1.1","depth":2,"path":"00-starting/README.adoc","ref":"00-starting/README.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/examples-setup.adoc","mtime":"2018-09-13T08:30:43.844Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-20T17:30:52.879Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Set up your local tools","level":"2.1.2","depth":2,"next":{"title":"Bootstrap your AWS account","level":"2.1.3","depth":2,"path":"00-starting/setup-aws.adoc","ref":"00-starting/setup-aws.adoc","articles":[]},"previous":{"title":"Concept: What is a stack?","level":"2.1.1","depth":2,"path":"00-starting/README.adoc","ref":"00-starting/README.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-workstation.adoc","mtime":"2018-09-25T16:19:38.451Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-27T15:35:13.440Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
