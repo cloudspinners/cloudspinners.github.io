@@ -113,9 +113,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="todo.adoc">
+        <li class="chapter " data-level="2.1" data-path="./">
             
-                <span>
+                <a href="./">
             
                     
                     Getting started
@@ -127,9 +127,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="./">
+        <li class="chapter " data-level="2.1.1" data-path="stack-concept.html">
             
-                <a href="./">
+                <a href="stack-concept.html">
             
                     
                     Concept: What is a stack?
@@ -197,9 +197,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="../01-basic-stack/todo.adoc">
+        <li class="chapter " data-level="2.2" data-path="../01-basic-stack/">
             
-                <span>
+                <a href="../01-basic-stack/">
             
                     
                     Tutorial 01 - creating a simple stack
@@ -793,15 +793,16 @@
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
 <span class="hljs-attr">  group:</span> YOURNAME_sandbox
+
 <span class="hljs-attr">resources:</span>
-<span class="hljs-attr">  aws_profile:</span> YOUR_PROFILE</code></pre>
+<span class="hljs-attr">  aws_profile:</span> YOUR_BOOTSTRAP_CREDENTIALS_PROFILE</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em>YOUR_PROFILE</em> will be the profile of the bootstrap AWS API keys you created if you followed the steps in the <a href="00-starting/setup-aws.adoc">previous page</a>.</p>
+<p><em>YOUR_BOOTSTRAP_CREDENTIALS_PROFILE</em> will be the name of the profile in <code>~/.aws/credentials</code> with the bootstrap AWS API keys you created if you followed the steps in the <a href="00-starting/setup-aws.adoc">previous page</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>group</code> setting doesn&#x2019;t matter too much. It&#x2019;s essentially an ID for your environment, which, in more complex setups, can be used to integrate different things together.</p>
+<p>The <code>group</code> setting doesn&#x2019;t matter too much. It&#x2019;s essentially an ID for your environment, which, in more complex setups, can be used to integrate different things together. It is also used in tags.</p>
 </div>
 </div>
 <div class="sect2">
@@ -845,14 +846,25 @@
 </div>
 <div class="sect2">
 <h3 id="_did_you_do_all_that">Did you do all that?</h3>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-caution" title="Caution">&#xF06D;</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>If you&#x2019;ve simply followed all of these instructions, you have potentially put yourself at risk. This project code could easily have been created by someone unscrupulous. Even if you trust me and know this is my project, someone else could have compromised my project code, and inserted code to exploit your AWS account.</p>
+<p>If you&#x2019;ve simply followed all of these instructions without having a close look at the code they apply to your cloud account, you have potentially put yourself at risk. This project code could easily have been created by someone unscrupulous. Even if you trust me and know this is my project, someone else could have compromised my project code, and inserted code to exploit your AWS account.</p>
 </div>
 <div class="paragraph">
 <p>You should make it a habit to carefully vet code before you download and apply it.</p>
 </div>
 <div class="paragraph">
 <p>In this case, the Ruby gems will have been downloaded into your local Ruby library folder, and the Terraform code will have been downloaded to <code>./00-statebucket/.cloudspin</code>. I&#x2019;d encourage you to review this code and make sure you&#x2019;re comfortable with what it does before running it.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -907,7 +919,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Set up a remote state bucket","level":"2.1.4","depth":2,"next":{"title":"Set up IAM roles","level":"2.1.5","depth":2,"path":"00-starting/setup-iam-roles.adoc","ref":"00-starting/setup-iam-roles.adoc","articles":[]},"previous":{"title":"Bootstrap your AWS account","level":"2.1.3","depth":2,"path":"00-starting/setup-aws.adoc","ref":"00-starting/setup-aws.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-statebucket.adoc","mtime":"2018-09-27T15:33:25.146Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-09-27T15:35:13.440Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Set up a remote state bucket","level":"2.1.4","depth":2,"next":{"title":"Set up IAM roles","level":"2.1.5","depth":2,"path":"00-starting/setup-iam-roles.adoc","ref":"00-starting/setup-iam-roles.adoc","articles":[]},"previous":{"title":"Bootstrap your AWS account","level":"2.1.3","depth":2,"path":"00-starting/setup-aws.adoc","ref":"00-starting/setup-aws.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-statebucket.adoc","mtime":"2018-10-09T15:30:39.962Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-10-09T15:51:01.416Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
