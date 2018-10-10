@@ -763,24 +763,27 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>(NOT UPDATED YET)</p>
+<p>In this part, you&#x2019;ll use the bootstrap user credentials created <a href="00-starting/setup-workstation.adoc">earlier</a> to create some IAM roles that can be used for further examples. You&#x2019;ll do this by creating an unprivileged IAM user, with credentials, that will be used to run the code by assuming IAM roles. You will then apply a stack (provided for you, but of course you&#x2019;ll look over the code before applying it) which will create IAM roles, and give your unprivileged user the right to assume those roles.</p>
+</div>
+<div class="paragraph">
+<p>This is all done in the name of <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#delegate-using-roles" target="_blank">good security hygiene</a>. AWS has documentation that explains <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-roles.html" target="_blank">how assuming a role works</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="__2_create_an_unprivileged_user">(2) Create an unprivileged user</h2>
+<h2 id="__1_create_an_unprivileged_user">(1) Create an unprivileged user</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Create a user (for example, <em>spin_user</em>) with no privileges, but which has an API access key, but no console access.</p>
+<p>Create a user (for example, <em>spin_user</em>) in the IAM console. Do not add the user to any groups, and don&#x2019;t give it console access. Create an API access key and secret key for the user.</p>
 </div>
 <div class="sect2">
-<h3 id="__2_1_add_the_unprivileged_user_to_the_aws_credentials_file">(2.1) Add the unprivileged user to the AWS credentials file</h3>
+<h3 id="__1_1_add_the_unprivileged_user_to_the_aws_credentials_file">(1.1) Add the unprivileged user to the AWS credentials file</h3>
 <div class="paragraph">
-<p>File: <code>~/.aws/credentials</code>:</p>
+<p>In file: <code>~/.aws/credentials</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[spin_YOURNAME]</span>
+<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[spin_user]</span>
 <span class="hljs-attr">aws_access_key_id</span> = AKIA........
 <span class="hljs-attr">aws_secret_access_key</span> = xxxxxxxxxxx</code></pre>
 </div>
@@ -789,107 +792,140 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="__3_add_the_bootstrap_user_to_the_stack_instance_local_yaml_file">(3) Add the bootstrap user to the stack-instance-local.yaml file</h2>
+<h2 id="__2_apply_the_iam_role_stack">(2) Apply the IAM role stack</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="__2_1_configure_the_iam_role_stack">(2.1) Configure the IAM role stack</h3>
 <div class="paragraph">
-<p>This should be temporary, only done in order to apply the iam-roles in the first place.</p>
+<p>Create a file <code>00-iam-roles/stack-starter_roles-local.yaml</code> (you can copy <code>00-iam-roles/stack-starter_roles-local-example.yaml</code> as a starter), and edit it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
+<span class="hljs-attr">  group:</span> YOURNAME_sandbox (<span class="hljs-number">1</span>)
+
+<span class="hljs-attr">terraform_backend:</span>
+<span class="hljs-attr">  bucket:</span> statebucket-cloudspin-examples-XXXXXXXXXXXX (<span class="hljs-number">2</span>)
+
+<span class="hljs-attr">parameters:</span>
+<span class="hljs-attr">  stack_manager_users:</span>
+<span class="hljs-bullet">    -</span> YOUR_UNPRIVILEGED_IAM_USER_NAME (<span class="hljs-number">3</span>)
+
+<span class="hljs-attr">resources:</span>
+<span class="hljs-attr">  aws_profile:</span> YOUR_BOOTSTRAP_PROFILE (<span class="hljs-number">4</span>)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>This may be the same as the value you set for your statebucket in the previous page.</p>
+</li>
+<li>
+<p>This should be the name of the bucket created in the previous page.</p>
+</li>
+<li>
+<p>This is the name of the unprivileged IAM user you created in the steps above in this page.</p>
+</li>
+<li>
+<p>This is the profile in your <code>~/.aws/credentials</code> file that you used for bootstrapping the statebucket. So these credentials have enough privileges to create IAM roles without needing to assume a role.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__2_2_apply_the_iam_roles_stack">(2.2) Apply the iam-roles stack</h3>
+<div class="paragraph">
+<p>The first time you do this, you&#x2019;ll need to initialize the tooling in the stack project folder <code>00-iam-roles</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">bundle install</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>File: <code>./stack-instance-local.yaml</code></p>
+<p>Now you can plan the stack and make sure you&#x2019;re happy with what it will do:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">rake plan</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then run the thing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">rake up</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__2_3_what_happened">(2.3) What happened?</h3>
+<div class="paragraph">
+<p>This should have created three IAM roles in your AWS account:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Table IAM Roles</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spin_role-cloudspin_examples-account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to manage IAM roles, policies, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spin_role-cloudspin_examples-delivery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to manage resources that support delivery, e.g. pipelines, S3 buckets, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spin_role-cloudspin_examples-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to manage basic stacks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__3_switch_over_to_using_the_managed_iam_roles">(3) Switch over to using the managed IAM roles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the steps above you used a privileged &quot;bootstrap&quot; IAM user to apply the stack. But the point of creating the IAM roles is so you can use &quot;assume role&quot; rather than using the privileged account.</p>
+</div>
+<div class="paragraph">
+<p>Add an assume-role profile to the file <code>~/.aws/config</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[profile assume-cloudspin_examples-account]</span>
+<span class="hljs-attr">role_arn</span> = arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/spin_role-cloudspin_examples-account
+<span class="hljs-attr">source_profile</span> = spin_user (<span class="hljs-number">1</span>)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>This is the profile for the unprivileged user you added to <code>~/.aws/credentials</code> earlier on this page.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Then in your local configuration file <code>./stack-starter_roles-local.yaml</code>, replace the bootstrap profile configuration with the configuration that will assume the newly created IAM role instead:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">resources:</span>
-<span class="hljs-attr">  aws_profile:</span> spin_bootstrap
-<span class="hljs-attr">  assume_role_profile:</span>
-<span class="hljs-attr">  assume_role_arn:</span>
-<span class="hljs-attr">parameters:</span>
-<span class="hljs-attr">  managed_stack_name:</span> YOUR_STACK_HERE
-<span class="hljs-attr">  stack_manager_users:</span>
-<span class="hljs-bullet">    -</span> spin_YOURNAME</code></pre>
+<span class="hljs-attr">  aws_profile:</span> spin_user (<span class="hljs-number">1</span>)
+<span class="hljs-attr">  assume_role_profile:</span> assume-cloudspin_examples-account
+<span class="hljs-attr">  assume_role_arn:</span> arn:aws:iam::XXXXXXXXXXXX:role/spin_role-cloudspin_examples-account</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="__3_1_testing_it">(3.1) Testing it</h3>
 <div class="paragraph">
-<p>You might also/instead define the <code>stack_manager_users</code> list in an <code>./environments/stack-instance-ENVIRONMENT.yaml</code> file, depending on how you plan to manage roles and environments. (At the moment, this stack doesn&#x2019;t do anything clever to support giving different rights to users rights in different environments.)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="__4_apply_the_iam_roles_stack">(4) Apply the iam-roles stack</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Once you have this all in place, you can plan and provision the stack. Do this by applying the stack, setting environment variables to use the bootstrap credentials.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">rake plan
-rake up</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="__5_replace_the_bootstrap_configuration_with_the_unprivileged_user_configuration">(5) Replace the bootstrap configuration with the unprivileged user configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In your <code>~/.aws/credentials</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[spin_YOURNAME]</span>
-<span class="hljs-attr">aws_access_key_id</span> = AKIA........
-<span class="hljs-attr">aws_secret_access_key</span> = xxxxxxxxxxx</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Add an assume-role profile to your <code>~/.aws/config</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[profile assume-IAM_ROLE-YOUR_STACK]</span>
-<span class="hljs-attr">role_arn</span> = arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/spin_role-YOUR_STACK-ROLE
-<span class="hljs-attr">source_profile</span> = IAM_USER_PROFILE_FROM_YOUR_CREDENTIALS_FILE</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[profile assume-spin_network-manager]</span>
-<span class="hljs-attr">role_arn</span> = arn:aws:iam::<span class="hljs-number">000000000000</span>:role/spin_role-spin_network-manager
-<span class="hljs-attr">source_profile</span> = spin_YOURNAME</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then in your stack configuration:</p>
-</div>
-<div class="paragraph">
-<p>File: <code>./stack-instance-local.yaml</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">resources:</span>
-<span class="hljs-attr">  aws_profile:</span> spin_YOURNAME
-<span class="hljs-attr">  assume_role_profile:</span> assume-YOUR_STACK_HERE-manager
-<span class="hljs-attr">  assume_role_arn:</span> arn:aws:iam::<span class="hljs-number">000000000000</span>:role/spin_role-spin_network-manager
-<span class="hljs-attr">parameters:</span>
-<span class="hljs-attr">  managed_stack_name:</span> YOUR_STACK
-<span class="hljs-attr">  stack_manager_users:</span>
-<span class="hljs-bullet">    -</span> spin_YOURNAME</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="__6_test_it">(6) Test it</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>(Note: this currently requires doing the previous configuration step for role <strong>spin_role-spin_network-manager</strong> account, as it requires some extra permissions to run these tests)</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">rake <span class="hljs-built_in">test</span></code></pre>
+<p>We need a nice spec for this. A rough way to test is to run <code>rake plan</code>, expecting it will show that nothing will be changed.</p>
 </div>
 </div>
 </div>
@@ -936,7 +972,7 @@ rake up</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Set up IAM roles","level":"2.1.5","depth":2,"next":{"title":"Tutorial 01 - creating a simple stack","level":"2.2","depth":1,"path":"01-basic-stack/README.adoc","ref":"01-basic-stack/README.adoc","articles":[{"title":"Creating a simple stack","level":"2.2.1","depth":2,"path":"01-basic-stack/stack-starting.adoc","ref":"01-basic-stack/stack-starting.adoc","articles":[]},{"title":"Testing the simple stack","level":"2.2.2","depth":2,"path":"01-basic-stack/stack-testing.adoc","ref":"01-basic-stack/stack-testing.adoc","articles":[]}]},"previous":{"title":"Set up a remote state bucket","level":"2.1.4","depth":2,"path":"00-starting/setup-statebucket.adoc","ref":"00-starting/setup-statebucket.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-iam-roles.adoc","mtime":"2018-09-27T15:34:48.658Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-10-09T15:51:01.416Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Set up IAM roles","level":"2.1.5","depth":2,"next":{"title":"Tutorial 01 - creating a simple stack","level":"2.2","depth":1,"path":"01-basic-stack/README.adoc","ref":"01-basic-stack/README.adoc","articles":[{"title":"Creating a simple stack","level":"2.2.1","depth":2,"path":"01-basic-stack/stack-starting.adoc","ref":"01-basic-stack/stack-starting.adoc","articles":[]},{"title":"Testing the simple stack","level":"2.2.2","depth":2,"path":"01-basic-stack/stack-testing.adoc","ref":"01-basic-stack/stack-testing.adoc","articles":[]}]},"previous":{"title":"Set up a remote state bucket","level":"2.1.4","depth":2,"path":"00-starting/setup-statebucket.adoc","ref":"00-starting/setup-statebucket.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-iam-roles.adoc","mtime":"2018-10-10T15:01:53.811Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-10-10T15:11:13.489Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
