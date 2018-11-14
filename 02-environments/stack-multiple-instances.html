@@ -64,7 +64,7 @@
     <link rel="next" href="stack-parameters.html" />
     
     
-    <link rel="prev" href="todo.adoc" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -242,9 +242,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="todo.adoc">
+        <li class="chapter " data-level="2.3" data-path="./">
             
-                <span>
+                <a href="./">
             
                     
                     Tutorial 02 - multiple environments
@@ -771,10 +771,10 @@
 <h2 id="_the_example_source_code">The example source code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The example project is in the folder examples/02-multiple-stacks, available from github at <a href="https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/02-multiple-stacks" class="bare" target="_blank">https://github.com/cloudspinners/cloudspin-reference/tree/master/part1/examples/02-multiple-stacks</a>.</p>
+<p>The example project is in the folder examples/02-multiple-stacks, available from github at <a href="https://github.com/cloudspinners/cloudspin-reference/tree/master/02-environments" class="bare" target="_blank">https://github.com/cloudspinners/cloudspin-reference/tree/master/02-environments</a>.</p>
 </div>
 <div class="paragraph">
-<p>This project creates some networking structures, just like the 01-simple-stack project, although it adds a <em>EnvironmentName</em> tag to the resources.</p>
+<p>This project creates some networking structures, just like the <em>01-basic-stack</em> project, although it adds an <code>EnvironmentName</code> tag to the resources.</p>
 </div>
 </div>
 </div>
@@ -788,10 +788,11 @@
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
 <span class="hljs-attr">  group:</span> NOT_SET
+
 <span class="hljs-attr">parameters:</span>
-<span class="hljs-attr">  region:</span> <span class="hljs-string">&quot;eu-west-1&quot;</span>
-<span class="hljs-attr">  availability_zones:</span> <span class="hljs-string">&quot;eu-west-1a,eu-west-1b,eu-west-1c&quot;</span>
-<span class="hljs-attr">  environment_name:</span> NOT_SET</code></pre>
+<span class="hljs-attr">  environment_name:</span> NOT_SET
+<span class="hljs-attr">  region:</span> eu-west<span class="hljs-bullet">-1</span>
+<span class="hljs-attr">  availability_zones:</span> <span class="hljs-string">&quot;eu-west-1a,eu-west-1b,eu-west-1c&quot;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -800,14 +801,50 @@
 <div class="paragraph">
 <p><code>instance:group</code> is used by the cloudspin tools to build unique a <code>instance_identifier</code> for each stack instance. Before, the instance_identifier was set to <strong><code>STACK_NAME</code></strong>, which was taken from the <em>stack:name</em> options set in the stack definition file <code>./src/stack-definition.yaml</code>. Now, <em>instance:group</em> is added to it, so the the instance_identifier is set to <strong><code>STACK_NAME-INSTANCE_GROUP</code></strong>.</p>
 </div>
+<div class="sect2">
+<h3 id="_create_your_local_stack_instance_configuration">Create your local stack instance configuration</h3>
 <div class="paragraph">
-<p>In this example, the stack name is <em>example2</em>, so if you were to run <code>stack up</code>, it would use <code>instance_identifier=example2-NOT_SET</code>.</p>
+<p>As with the previous tutorial, you need to create a local configuration file so the cloudspin tools can access your AWS account. You can copy the example configuration file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry
-cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/example2-NOT_SET &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=NOT_SET&apos; -var &apos;aws_profile=my-cloudspin-user&apos; -var &apos;assume_role_profile=assume-my-cloudspin-role&apos; -var &apos;assume_role_arn=arn:aws:iam::000000000000:role/my-cloudspin-iam-role&apos; -var &apos;instance_identifier=example2-NOT_SET&apos; -state=/Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/state/example2-NOT_SET/stack-example2-NOT_SET.tfstate</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp stack-instance-local-example.yaml stack-instance-local.yaml</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>And then edit the file to match your account details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__local_stack_instance">&quot;Local&quot; stack instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use the <code>stack</code> command as in the previous tutorial to manage your own instance of the stack.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should look something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cd /YOUR_PROJECT_FOLDER/02-environments/work/example2-NOT_SET &amp;&amp; terraform init -backend=true -backend-config &apos;region=eu-west-1&apos; -backend-config &apos;encrypt=true&apos; -backend-config &apos;bucket=statebucket-cloudspin-examples-xxxxxxxxxxxx&apos; -backend-config &apos;profile=YOUR_UNPRIVILEGED_PROFILE&apos; -backend-config &apos;role_arn=arn:aws:iam::xxxxxxxxxxxx:role/spin_role-cloudspin_examples-manager&apos; -backend-config &apos;key=example2-NOT_SET.tfstate&apos;
+cd /YOUR_PROJECT_FOLDER/02-environments/work/example2-NOT_SET &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=NOT_SET&apos; -var &apos;aws_profile=YOUR_UNPRIVILEGED_PROFILE&apos; -var &apos;assume_role_profile=assume-cloudspin_examples-manager&apos; -var &apos;assume_role_arn=arn:aws:iam::xxxxxxxxxxxx:role/spin_role-cloudspin_examples-manager&apos; -var &apos;instance_identifier=example2-NOT_SET&apos;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The interesting bit here is the <em>environment_name</em> variable: <code>environment_name=NOT_SET</code>, and the <em>instance_identifier</em> variable: <code>instance_identifier=example2-NOT_SET</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>stack-instance-defaults.yaml</code> file, as shown above, defines both the <em>environment</em> and <em>group</em> parameters to be <code>NOT_SET</code>. In order to have multiple stack instances, we&#x2019;ll need a way to override these.</p>
+</div>
+<div class="paragraph">
+<p>You can run <code>stack down</code> to destroy this stack instance.</p>
 </div>
 </div>
 </div>
@@ -815,12 +852,13 @@ cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/ex
 <h2 id="_environment_configuration_files">Environment configuration files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It would be useful to set configuration options for multiple environments. This can be done by creating files in a folder called <code>./environments</code>, each file being named <code>stack-instance-ENVIRONMENT_NAME.yaml</code>.</p>
+<p>Configuration options for different environments can be set by creating files in a folder called <code>./environments</code>, each file being named <code>stack-instance-ENVIRONMENT_NAME.yaml</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">instance:</span>
 <span class="hljs-attr">  group:</span> sandbox
+
 <span class="hljs-attr">parameters:</span>
 <span class="hljs-attr">  environment_name:</span> sandbox</code></pre>
 </div>
@@ -833,12 +871,42 @@ cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/ex
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry -e sandbox
-cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/example2-sandbox &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=sandbox&apos; -var &apos;instance_identifier=example2-sandbox&apos; -state=/Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/state/example2-sandbox/stack-example2-sandbox.tfstate</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">$ stack up --dry -e sandbox</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The stack tool looks for the environment configuration file based on the name passed to the -e flag.</p>
+<p>The stack tool uses the environment string passed to it to find a file named <code>./environments/stack-instance-ENVIRONMENT.yaml</code>, which in this case is: <code>./environments/stack-instance-sandbox.yaml</code>. The output is something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cd /YOUR_PROJECT_FOLDER/02-environments/work/example2-sandbox &amp;&amp; terraform init -backend=true -backend-config &apos;region=eu-west-1&apos; -backend-config &apos;encrypt=true&apos; -backend-config &apos;bucket=statebucket-cloudspin-examples-xxxxxxxxxxxx&apos; -backend-config &apos;profile=YOUR_UNPRIVILEGED_PROFILE&apos; -backend-config &apos;role_arn=arn:aws:iam::xxxxxxxxxxxx:role/spin_role-cloudspin_examples-manager&apos; -backend-config &apos;key=example2-sandbox.tfstate&apos;
+cd /YOUR_PROJECT_FOLDER/02-environments/work/example2-sandbox &amp;&amp; terraform apply -var &apos;region=eu-west-1&apos; -var &apos;availability_zones=eu-west-1a,eu-west-1b,eu-west-1c&apos; -var &apos;environment_name=sandbox&apos; -var &apos;aws_profile=YOUR_UNPRIVILEGED_PROFILE&apos; -var &apos;assume_role_profile=assume-cloudspin_examples-manager&apos; -var &apos;assume_role_arn=arn:aws:iam::xxxxxxxxxxxx:role/spin_role-cloudspin_examples-manager&apos; -var &apos;instance_identifier=example2-sandbox&apos;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So you can see that the <em>environment_name</em> variable passed to terraform is now <code>environment_name=sandbox</code>, and <em>instance_identifier</em> is now <code>instance_identifier=example2-sandbox</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_multiple_instances_of_the_stack">Create multiple instances of the stack</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are environment configuration files for two environments, <em>sandbox</em> and <em>staging</em>. You can spin up an instance of each:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">stack up -e sandbox
+stack up -e staging</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then see the VPCs in the AWS console, or by running the aws cli:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">aws ec2 describe-vpcs --profile assume-cloudspin_examples-manager --region eu-west-1</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -858,7 +926,8 @@ cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/ex
 
 [<span class="hljs-string">&apos;sandbox&apos;</span>, <span class="hljs-string">&apos;staging&apos;</span>].each { |environment|
   namespace <span class="hljs-string">&quot;<span class="hljs-subst">#{environment}</span>&quot;</span> <span class="hljs-keyword">do</span>
-    StackTask.new(environment).instance
+    stack = StackTask.new(environment).instance
+    InspecTask.new(<span class="hljs-symbol">stack_instance:</span> stack)
   <span class="hljs-keyword">end</span>
 }</code></pre>
 </div>
@@ -869,15 +938,53 @@ cd /Users/you/spin/cloudspin-reference/part1/examples/02-multiple-stacks/work/ex
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">$ rake -T
-rake sandbox:down    # Destroy stack example2-sandbox
-rake sandbox:dry     # Show command line to be run for stack example2-sandbox
-rake sandbox:plan    # Plan changes to stack example2-sandbox
-rake sandbox:up      # Create or update stack example2-sandbox
-rake staging:down    # Destroy stack example2-staging
-rake staging:dry     # Show command line to be run for stack example2-staging
-rake staging:plan    # Plan changes to stack example2-staging
-rake staging:up      # Create or update stack example2-staging</code></pre>
+rake sandbox:down    # Destroy stack instance
+rake sandbox:dry     # Show command line to be run for stack instance
+rake sandbox:inspec  # Run inspec tests
+rake sandbox:plan    # Plan changes to stack instance
+rake sandbox:up      # Create or update stack instance
+rake staging:down    # Destroy stack instance
+rake staging:dry     # Show command line to be run for stack instance
+rake staging:inspec  # Run inspec tests
+rake staging:plan    # Plan changes to stack instance
+rake staging:up      # Create or update stack instance</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The testing story is pretty much the same. The StackTask class automatically adds inspec tasks for each stack instance, as long as it finds inspec controls in the <code>./test</code> folder. The inspec control code itself needs to use the <em>instance_identifier</em> attribute to ensure it is testing the correct instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">instance_identifier = attribute(<span class="hljs-string">&apos;instance_identifier&apos;</span>, <span class="hljs-symbol">description:</span> <span class="hljs-string">&apos;Which stack to test&apos;</span>)
+
+describe aws_vpc_list <span class="hljs-keyword">do</span>
+  its(<span class="hljs-string">&apos;name&apos;</span>) { should <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;vpc-<span class="hljs-subst">#{instance_identifier}</span>&quot;</span> }
+<span class="hljs-keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cleaning_up">Cleaning up</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">stack down -e sandbox
+stack down -e staging</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_doing_more_interesting_things">Doing more interesting things</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main thing we&#x2019;ve accomplished in this tutorial is the ability to create more than one stack instance from a single stack definition. The only difference with each instance is the two variables, <em>instance_identifier</em> and <em>environment_name</em>, which only affect tagging. However, you can see how it would be possible to set other variables differently per environment. This would require adding the variables to the environment configuration files, and then adding the variables within the Terraform code to make use of these.</p>
 </div>
 </div>
 </div>
@@ -907,7 +1014,7 @@ rake staging:up      # Create or update stack example2-staging</code></pre>
 
             
                 
-                <a href="todo.adoc" class="navigation navigation-prev " aria-label="Previous page: Tutorial 02 - multiple environments">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Tutorial 02 - multiple environments">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -923,7 +1030,7 @@ rake staging:up      # Create or update stack example2-staging</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Creating multiple stack instances","level":"2.3.1","depth":2,"next":{"title":"Using parameters for stack instances","level":"2.3.2","depth":2,"path":"02-environments/stack-parameters.adoc","ref":"02-environments/stack-parameters.adoc","articles":[]},"previous":{"title":"Tutorial 02 - multiple environments","level":"2.3","depth":1,"path":"02-environments/todo.adoc","ref":"02-environments/todo.adoc","articles":[{"title":"Creating multiple stack instances","level":"2.3.1","depth":2,"path":"02-environments/stack-multiple-instances.adoc","ref":"02-environments/stack-multiple-instances.adoc","articles":[]},{"title":"Using parameters for stack instances","level":"2.3.2","depth":2,"path":"02-environments/stack-parameters.adoc","ref":"02-environments/stack-parameters.adoc","articles":[]}]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"02-environments/stack-multiple-instances.adoc","mtime":"2018-09-11T15:05:06.916Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-11-13T16:22:50.371Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Creating multiple stack instances","level":"2.3.1","depth":2,"next":{"title":"Using parameters for stack instances","level":"2.3.2","depth":2,"path":"02-environments/stack-parameters.adoc","ref":"02-environments/stack-parameters.adoc","articles":[]},"previous":{"title":"Tutorial 02 - multiple environments","level":"2.3","depth":1,"path":"02-environments/README.adoc","ref":"02-environments/README.adoc","articles":[{"title":"Creating multiple stack instances","level":"2.3.1","depth":2,"path":"02-environments/stack-multiple-instances.adoc","ref":"02-environments/stack-multiple-instances.adoc","articles":[]},{"title":"Using parameters for stack instances","level":"2.3.2","depth":2,"path":"02-environments/stack-parameters.adoc","ref":"02-environments/stack-parameters.adoc","articles":[]}]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"02-environments/stack-multiple-instances.adoc","mtime":"2018-11-14T11:20:42.335Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-11-14T11:22:38.738Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
