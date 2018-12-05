@@ -766,15 +766,10 @@
 <p>The cloudspin example code is implemented in Terraform, which uses <a href="https://www.terraform.io/docs/state/" target="_blank">state files</a> to map the resources it manages to your project code.</p>
 </div>
 <div class="paragraph">
-<p>There are various ways to manage Terraform state, in our case, we will store it in an S3 bucket. This preserves the state in the event that anything happens to your local files (e.g. accidentally deleting local statefiles). It also allows multiple people to work on the same infrastructure instances.</p>
+<p>Each stack instance you create will have its own statefile. There are various places you can store these statefiles, including your local hard drive, and hosted services. For our examples, we will store the state for our stack instances in S3. This preserves the state in the event that anything happens to your local files (e.g. accidentally deleting local statefiles). It also allows multiple people to work on the same stack instances from their own computers.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_state_for_your_statebucket">State for your statebucket</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Where does the statefile for the stack that manages your statefile bucket live? Once you&#x2019;ve created your bucket, you&#x2019;ll migrate your state to it. So the terraform state for the stack that manages your bucket lives within the bucket itself.</p>
+<p>So a key part of bootstrapping is to create an S3 bucket that we can use to store the statefiles. We will use Terraform to create the S3 bucket, which creates a classic bootstrap situation - where do we store the state for the infrastructure that stores the state? The answer is that we will initially have the state for the S3 bucket on local disk, and then once the bucket is created, we will migrate the statefile into it.</p>
 </div>
 </div>
 </div>
@@ -782,7 +777,7 @@
 <h2 id="_planning_and_creating_your_statebucket">Planning and creating your statebucket</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The folder <code>00-statebucket</code> has a cloudspin project that will create a statebucket for you. This uses the <a href="https://github.com/cloudspinners/spin-stack-s3bucket" target="_blank">s3bucket stack</a> definition. Here&#x2019;s how to do it.</p>
+<p>The folder <code>00-statebucket</code> has a cloudspin stack that will create a statebucket for you. This uses the <a href="https://github.com/cloudspinners/spin-stack-s3bucket" target="_blank">s3bucket stack</a> definition. Here&#x2019;s how to do it.</p>
 </div>
 <div class="sect2">
 <h3 id="__1_create_a_local_configuration_file">(1) Create a local configuration file</h3>
@@ -850,7 +845,10 @@
 <p>Now you need to migrate your terraform state, which is currently in a local folder (<code>./state/YOURNAME_sandbox</code>), to the S3 bucket. This will allow other people in your team to make changes to the statebucket stack.</p>
 </div>
 <div class="paragraph">
-<p>The process to do this (and keep in mind, this cloudspin tooling is for proof of concept, so this is clunkier than we&#x2019;d like) is to edit your local configuration, including setting a temporary option to make the migration happen:</p>
+<p>To migrate your state, you will need to edit your configuration to specify the S3 bucket as the location for the terraform_backend. When cloudspin runs and finds there is a local statefile, and also a remote backend configured, it will set things up so that terraform will migrate the state to the remote location.</p>
+</div>
+<div class="paragraph">
+<p>So, edit your file <code>00-statebucket/stack-statebucket-local.yaml</code> to add a <code>terraform_backend</code> section:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -864,8 +862,7 @@
 <span class="hljs-attr">  bucket:</span> YOURNAME_sandbox-XXXXXXXXXXXX
 <span class="hljs-attr">  profile:</span> YOUR_BOOTSTRAP_CREDENTIALS_PROFILE
 <span class="hljs-attr">  region:</span> eu-west<span class="hljs-bullet">-1</span>
-<span class="hljs-attr">  encrypt:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  migrate:</span> <span class="hljs-literal">true</span></code></pre>
+<span class="hljs-attr">  encrypt:</span> <span class="hljs-literal">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -903,23 +900,7 @@ use this backend unless the backend configuration changes.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="__6_change_your_configuration_to_use_the_bucket_for_state">(6) Change your configuration to use the bucket for state</h3>
-<div class="paragraph">
-<p>This is the clunkiest part. You need to remove the <code>migrate</code> flag from your local configuration, so that cloudspin doesn&#x2019;t try to migrate old local state again.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-attr">terraform_backend:</span>
-  ...
-  <span class="hljs-comment"># migrate: true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Comment out (or delete) this line from the file. The re-run <code>rake plan</code>, and make sure it&#x2019;s all happy. I tend to also move the local state folder somewhere else, and re-run <code>rake plan</code>, <code>rake up</code>, etc. to make sure it&#x2019;s all good.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="__7_after_iam_stack_switch_to_using_the_iam_roles">(7) After IAM stack, switch to using the IAM roles</h3>
+<h3 id="__6_after_iam_stack_switch_to_using_the_iam_roles">(6) After IAM stack, switch to using the IAM roles</h3>
 <div class="paragraph">
 <p>The next step of this tutorial is to create IAM roles that are used to run terraform more securely. Once those have been created, you can switch this stack to use those roles by editing your <code>stack-instance-local.yaml</code> file for this statebucket stack:</p>
 </div>
@@ -935,8 +916,7 @@ use this backend unless the backend configuration changes.</code></pre>
 <span class="hljs-attr">  profile:</span> YOUR_UNPRIVEGED_CREDENTIALS_PROFILE
 <span class="hljs-attr">  role_arn:</span> arn:aws:iam::XXXXXXXXXXXX:role/spin_role-cloudspin_examples-manager
 <span class="hljs-attr">  region:</span> eu-west<span class="hljs-bullet">-1</span>
-<span class="hljs-attr">  encrypt:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-comment"># migrate: true (or delete this line)</span></code></pre>
+<span class="hljs-attr">  encrypt:</span> <span class="hljs-literal">true</span></code></pre>
 </div>
 </div>
 </div>
@@ -1015,7 +995,7 @@ use this backend unless the backend configuration changes.</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Create a remote state bucket","level":"2.1.4","depth":2,"next":{"title":"Create IAM roles","level":"2.1.5","depth":2,"path":"00-starting/setup-iam-roles.adoc","ref":"00-starting/setup-iam-roles.adoc","articles":[]},"previous":{"title":"Create a bootstrap user","level":"2.1.3","depth":2,"path":"00-starting/setup-aws.adoc","ref":"00-starting/setup-aws.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-statebucket.adoc","mtime":"2018-11-21T14:55:57.246Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-11-21T14:58:47.598Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create a remote state bucket","level":"2.1.4","depth":2,"next":{"title":"Create IAM roles","level":"2.1.5","depth":2,"path":"00-starting/setup-iam-roles.adoc","ref":"00-starting/setup-iam-roles.adoc","articles":[]},"previous":{"title":"Create a bootstrap user","level":"2.1.3","depth":2,"path":"00-starting/setup-aws.adoc","ref":"00-starting/setup-aws.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":["asciidoc-admonition-icons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kief Morris","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"CloudSpin Reference","gitbook":"*"},"file":{"path":"00-starting/setup-statebucket.adoc","mtime":"2018-12-04T23:04:56.924Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-12-05T09:18:33.067Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
